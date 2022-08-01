@@ -1,24 +1,26 @@
 <template>
   <div id="app">
-    
+    <HeadComponent></HeadComponent>
 
   </div>
 </template>
 
 <script>
-import HeadComponent from './components/HeadComponent.vue'
+import HeadComponent from './components/HeadComponent'
 
 export default {
   name: 'App',
   components: {
-    HeadComponent,
-
-  }
+    HeadComponent
+}
 }
 </script>
 
 <style>
 #app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
