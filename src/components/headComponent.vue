@@ -1,17 +1,17 @@
 <template>
   <div>
-    <div></div>
+    <div class=""></div>
     <button></button>
     <button></button>
   </div>
 </template>
 
 <script>
-export default {
+    export default {
 
-}
+    }
 </script>
 
-<style>
+<style scoped>
 
 </style>
