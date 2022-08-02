@@ -1,17 +1,19 @@
 <template>
   <div id="app">
     <HeadComponent></HeadComponent>
-
+    <LaunchPadComponent></LaunchPadComponent>
   </div>
 </template>
 
 <script>
 import HeadComponent from './components/HeadComponent'
+import LaunchPadComponent from './components/LaunchPadComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    HeadComponent
+    HeadComponent,
+    LaunchPadComponent
 }
 }
 </script>
@@ -26,6 +28,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  width: 100%;
 }
 </style>
