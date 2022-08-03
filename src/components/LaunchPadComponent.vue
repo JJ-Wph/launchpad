@@ -75,14 +75,8 @@
                 zIsClicked: false,
                 xIsClicked: false,
                 cIsClicked: false,
-
-                
-                
-
             }
         },
-
-        computed: {},
 
         methods: {
             playSound(sound) {
