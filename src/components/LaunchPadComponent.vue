@@ -8,7 +8,7 @@
         @keyup.w="wIsClicked=!wIsClicked"
         @keydown.e="playSound('https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/25[kb]sp12-26.wav.mp3'); eIsClicked=!eIsClicked"
         @keyup.e="eIsClicked=!eIsClicked"
-        @keydown.a="playSound('https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/25[kb]sp12-20.wav.mp3'); aIsClicked=!aIsClicked"
+        @keydown.a="playSound('https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/VIDEO%20GAMES/zaxxon/17[kb]01.wav.mp3'); aIsClicked=!aIsClicked"
         @keyup.a="aIsClicked=!aIsClicked"
         @keydown.s="playSound('https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Cheesy%20Lo-Fi%20Sound%20Effects/39[kb]Alert-Siren.wav.mp3'); sIsClicked=!sIsClicked"
         @keyup.s="sIsClicked=!sIsClicked"
@@ -24,7 +24,6 @@
         <div
             class="qdiv"
             :class="{colorRed: qIsClicked}"
-            
             @click.q="qIsClicked=!qIsClicked">q</div>
         <div
             class="wdiv"
@@ -59,13 +58,16 @@
             :class="{colorRed: cIsClicked}"
             @keydown.w="cIsClicked=!cIsClicked">c</div>
     </div>
+    
 </template>
 
 <script>
 
     export default {
+
         data() {
             return {
+
                 qIsClicked: false,
                 wIsClicked: false,
                 eIsClicked: false,
@@ -84,7 +86,7 @@
                     var audio = new Audio(sound);
                     audio.play();
                 }
-            }
+            },
         }
     }
 </script>
@@ -95,11 +97,12 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr;
         gap: 2% 2%;
-        grid-template-areas: ". qdiv wdiv ediv ." ". adiv sdiv ddiv ." ". zdiv xdiv cdiv .";
-        justify-content: center;
-        align-content: center;
-        align-items: stretch;
-        width: 100%;
+        grid-template-areas:    ". qdiv wdiv ediv ." 
+                                ". adiv sdiv ddiv ." 
+                                ". zdiv xdiv cdiv .";
+        justify-items: center;
+        align-items: center;
+        width: 50%;
         height: 100%;
     }
 
@@ -136,6 +139,8 @@
         border: 2px solid black;
         align-items: center;
         justify-content: center;
+        width: 8rem;
+        height: 8rem;
     }
 
     .colorRed {
