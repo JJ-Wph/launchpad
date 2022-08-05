@@ -1,5 +1,7 @@
 <template>
+    
     <div
+        v-if="!isMobile()"
         class="main"
         tabindex="-1"
         @keydown.q="playSound('https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/31[kb]sp12-06.wav.mp3'); qIsClicked=!qIsClicked"
@@ -18,13 +20,17 @@
         @keyup.z="zIsClicked=!zIsClicked"
         @keydown.x="playSound('https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Cheesy%20Lo-Fi%20Sound%20Effects/11[kb]Beep-Boop.wav.mp3'); xIsClicked=!xIsClicked"
         @keyup.x="xIsClicked=!xIsClicked"
-        @keydown.c="playSound('https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/28[kb]sp12-21.wav.mp3'); cIsClicked=!cIsClicked"
-        @keyup.c="cIsClicked=!cIsClicked"
+        @keydown.c="playSound(cSound.link); cSound.isClicked=!cSound.isClicked"
+        @keyup.c="cSound.isClicked=!cSound.isClicked"
         >
+        <div class="powerButton" @click="isOn=!isOn"><button>{{isOn}}</button></div>
         <div
             class="qdiv"
             :class="{colorRed: qIsClicked}"
-            @click.q="qIsClicked=!qIsClicked">q</div>
+            @mousedown="playSound('https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/31[kb]sp12-06.wav.mp3'); qIsClicked=!qIsClicked"
+            @mouseup="qIsClicked=!qIsClicked"
+            
+            >q</div>
         <div
             class="wdiv"
             :class="{colorRed: wIsClicked}"
@@ -32,7 +38,7 @@
         <div
             class="ediv"
             :class="{colorRed: eIsClicked}"
-            @keydown.w="eIsClicked=!eIsClicked">e</div>
+            @keydown.e="eIsClicked=!eIsClicked">e</div>
         <div
             class="adiv"
             :class="{colorRed: aIsClicked}"
@@ -48,17 +54,19 @@
         <div
             class="zdiv"
             :class="{colorRed: zIsClicked}"
+            :style="dynClass[0]"
             @keydown.w="zIsClicked=!zIsClicked">z</div>
         <div
             class="xdiv"
+            :style="dynClass[1]"
             :class="{colorRed: xIsClicked}"
             @keydown.w="xIsClicked=!xIsClicked">x</div>
         <div
             class="cdiv"
-            :class="{colorRed: cIsClicked}"
-            @keydown.w="cIsClicked=!cIsClicked">c</div>
+            :class="{colorRed: cSound.isClicked}"
+            @keydown.c="cSound.isClicked=!cSound.isClicked">c</div>
     </div>
-    
+    <div v-else>haba baba</div>
 </template>
 
 <script>
@@ -67,6 +75,7 @@
 
         data() {
             return {
+                isOn: false,
 
                 qIsClicked: false,
                 wIsClicked: false,
@@ -76,11 +85,42 @@
                 dIsClicked: false,
                 zIsClicked: false,
                 xIsClicked: false,
-                cIsClicked: false,
+
+                dynClass: [
+                {
+                    backgroundColor: 'green',
+                    border: '3px solid red'
+                },
+                {
+                    backgroundColor: 'yellow',
+                    border: '1px dashed cyan'
+                }
+                ],
+
+                qSound:{},
+                wSound:{},
+                eSound:{},
+                aSound:{},
+                sSound:{},
+                dSound:{},
+                zSound:{},
+                xSound:{},
+                cSound: {
+                    link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/28[kb]sp12-21.wav.mp3',
+                    isClicked: false
+                }
             }
         },
 
         methods: {
+            isMobile() {
+                if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    return true
+                } else {
+                    return false
+                }
+            },
+
             playSound(sound) {
                 if (sound) {
                     var audio = new Audio(sound);
@@ -145,5 +185,9 @@
 
     .colorRed {
         background-color: red;
+    }
+
+    .powerOff {
+        background-color: blue;
     }
 </style>
