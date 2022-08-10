@@ -21,7 +21,7 @@ export default {
     display: flex;
     justify-content: center;
     flex-direction: row;
-    width: 50%;
+    width: 35%;
     margin-top: 4vh;
     margin-bottom: 2vh;
 }

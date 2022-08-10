@@ -4,68 +4,60 @@
         v-if="!isMobile()"
         class="main"
         tabindex="-1"
-        @keydown.q="playSound('https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/31[kb]sp12-06.wav.mp3'); qIsClicked=!qIsClicked"
-        @keyup.q="qIsClicked=!qIsClicked"
-        @keydown.w="playSound('https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/34[kb]sp12-28.wav.mp3'); wIsClicked=!wIsClicked"
-        @keyup.w="wIsClicked=!wIsClicked"
-        @keydown.e="playSound('https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/25[kb]sp12-26.wav.mp3'); eIsClicked=!eIsClicked"
-        @keyup.e="eIsClicked=!eIsClicked"
-        @keydown.a="playSound('https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/VIDEO%20GAMES/zaxxon/17[kb]01.wav.mp3'); aIsClicked=!aIsClicked"
-        @keyup.a="aIsClicked=!aIsClicked"
-        @keydown.s="playSound('https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Cheesy%20Lo-Fi%20Sound%20Effects/39[kb]Alert-Siren.wav.mp3'); sIsClicked=!sIsClicked"
-        @keyup.s="sIsClicked=!sIsClicked"
-        @keydown.d="playSound('https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/18[kb]sp12-17.wav.mp3'); dIsClicked=!dIsClicked"
-        @keyup.d="dIsClicked=!dIsClicked"
-        @keydown.z="playSound('https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/7[kb]sp12-24.wav.mp3'); zIsClicked=!zIsClicked"
-        @keyup.z="zIsClicked=!zIsClicked"
-        @keydown.x="playSound('https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Cheesy%20Lo-Fi%20Sound%20Effects/11[kb]Beep-Boop.wav.mp3'); xIsClicked=!xIsClicked"
-        @keyup.x="xIsClicked=!xIsClicked"
+        @keydown.q="playSound(qSound.link); qSound.isClicked=!qSound.isClicked"
+        @keyup.q="qSound.isClicked=!qSound.isClicked"
+        @keydown.w="playSound(wSound.link); wSound.isClicked=!wSound.isClicked"
+        @keyup.w="wSound.isClicked=!wSound.isClicked"
+        @keydown.e="playSound(eSound.link); eSound.isClicked=!eSound.isClicked"
+        @keyup.e="eSound.isClicked=!eSound.isClicked"
+        @keydown.a="playSound(aSound.link); aSound.isClicked=!aSound.isClicked"
+        @keyup.a="aSound.isClicked=!aSound.isClicked"
+        @keydown.s="playSound(sSound.link); sSound.isClicked=!sSound.isClicked"
+        @keyup.s="sSound.isClicked=!sSound.isClicked"
+        @keydown.d="playSound(dSound.link); dSound.isClicked=!dSound.isClicked"
+        @keyup.d="dSound.isClicked=!dSound.isClicked"
+        @keydown.z="playSound(zSound.link); zSound.isClicked=!zSound.isClicked"
+        @keyup.z="zSound.isClicked=!zSound.isClicked"
+        @keydown.x="playSound(xSound.link); xSound.isClicked=!xSound.isClicked"
+        @keyup.x="xSound.isClicked=!xSound.isClicked"
         @keydown.c="playSound(cSound.link); cSound.isClicked=!cSound.isClicked"
         @keyup.c="cSound.isClicked=!cSound.isClicked"
         >
         <div class="powerButton" @click="isOn=!isOn"><button>{{isOn}}</button></div>
         <div
             class="qdiv"
-            :class="{colorRed: qIsClicked}"
-            @mousedown="playSound('https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/31[kb]sp12-06.wav.mp3'); qIsClicked=!qIsClicked"
-            @mouseup="qIsClicked=!qIsClicked"
-            
-            >q</div>
+            :class="{colorRed: qSound.isClicked, colorGreen: !qSound.isClicked}">q</div>
         <div
             class="wdiv"
-            :class="{colorRed: wIsClicked}"
-            @keydown.w="wIsClicked=!wIsClicked">w</div>
+            :class="{colorRed: wSound.isClicked, colorGreen: !wSound.isClicked}">w</div>
         <div
             class="ediv"
-            :class="{colorRed: eIsClicked}"
-            @keydown.e="eIsClicked=!eIsClicked">e</div>
+            :class="{colorRed: eSound.isClicked, colorGreen: !eSound.isClicked}">e</div>
         <div
             class="adiv"
-            :class="{colorRed: aIsClicked}"
-            @keydown.w="aIsClicked=!aIsClicked">a</div>
+            :class="{colorRed: aSound.isClicked, colorBlue: !aSound.isClicked}">a</div>
         <div
             class="sdiv"
-            :class="{colorRed: sIsClicked}"
-            @keydown.w="sIsClicked=!sIsClicked">s</div>
+            :class="{colorRed: sSound.isClicked, colorBlue: !sSound.isClicked}">s</div>
         <div
             class="ddiv"
-            :class="{colorRed: dIsClicked}"
-            @keydown.w="dIsClicked=!dIsClicked">d</div>
+            :class="{colorRed: dSound.isClicked, colorBlue: !dSound.isClicked}">d</div>
         <div
             class="zdiv"
-            :class="{colorRed: zIsClicked}"
-            :style="dynClass[0]"
-            @keydown.w="zIsClicked=!zIsClicked">z</div>
+            :class="{colorRed: zSound.isClicked, colorPurple: !zSound.isClicked}">z</div>
         <div
             class="xdiv"
-            :style="dynClass[1]"
-            :class="{colorRed: xIsClicked}"
-            @keydown.w="xIsClicked=!xIsClicked">x</div>
+            :class="{colorRed: xSound.isClicked, colorPurple: !xSound.isClicked}">x</div>
         <div
             class="cdiv"
-            :class="{colorRed: cSound.isClicked}"
-            @keydown.c="cSound.isClicked=!cSound.isClicked">c</div>
+            :class="{colorRed: cSound.isClicked, colorPurple: !cSound.isClicked}">c</div>
+        <div class="volume">
+            <input type="range">
+            <input type="range">
+        </div>
+        
     </div>
+    
     <div v-else>haba baba</div>
 </template>
 
@@ -77,34 +69,38 @@
             return {
                 isOn: false,
 
-                qIsClicked: false,
-                wIsClicked: false,
-                eIsClicked: false,
-                aIsClicked: false,
-                sIsClicked: false,
-                dIsClicked: false,
-                zIsClicked: false,
-                xIsClicked: false,
-
-                dynClass: [
-                {
-                    backgroundColor: 'green',
-                    border: '3px solid red'
+                qSound:{
+                    link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/31[kb]sp12-06.wav.mp3',
+                    isClicked: false
                 },
-                {
-                    backgroundColor: 'yellow',
-                    border: '1px dashed cyan'
-                }
-                ],
-
-                qSound:{},
-                wSound:{},
-                eSound:{},
-                aSound:{},
-                sSound:{},
-                dSound:{},
-                zSound:{},
-                xSound:{},
+                wSound:{
+                    link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/34[kb]sp12-28.wav.mp3',
+                    isClicked: false
+                },
+                eSound:{
+                    link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/25[kb]sp12-26.wav.mp3',
+                    isClicked: false
+                },
+                aSound:{
+                    link: 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/VIDEO%20GAMES/zaxxon/17[kb]01.wav.mp3',
+                    isClicked: false
+                },
+                sSound:{
+                    link: 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Cheesy%20Lo-Fi%20Sound%20Effects/39[kb]Alert-Siren.wav.mp3',
+                    isClicked: false
+                },
+                dSound:{
+                    link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/18[kb]sp12-17.wav.mp3',
+                    isClicked: false
+                },
+                zSound:{
+                    link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/7[kb]sp12-24.wav.mp3',
+                    isClicked: false
+                },
+                xSound:{
+                    link: 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Cheesy%20Lo-Fi%20Sound%20Effects/11[kb]Beep-Boop.wav.mp3',
+                    isClicked: false
+                },
                 cSound: {
                     link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/28[kb]sp12-21.wav.mp3',
                     isClicked: false
@@ -134,16 +130,18 @@
 <style scoped="scoped">
     .main {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
         gap: 2% 2%;
-        grid-template-areas:    ". qdiv wdiv ediv ." 
-                                ". adiv sdiv ddiv ." 
-                                ". zdiv xdiv cdiv .";
+        grid-template-areas:    "powerButton qdiv wdiv ediv" 
+                                "volume adiv sdiv ddiv" 
+                                "volume zdiv xdiv cdiv";
         justify-items: center;
         align-items: center;
-        width: 50%;
-        height: 100%;
+        width: 35%;
+        height: 50%;
+        border: 2px solid silver;
+        outline: none;
     }
 
     .qdiv {
@@ -176,7 +174,7 @@
 
     .main > div {
         display: flex;
-        border: 2px solid black;
+        border: none;
         align-items: center;
         justify-content: center;
         width: 8rem;
@@ -184,10 +182,28 @@
     }
 
     .colorRed {
-        background-color: red;
+        background: radial-gradient(#e7c0c0, #c41c1c);
+    }
+
+    .colorGreen {
+        background: radial-gradient(#e9f0ea00, #42bb52);
+    }
+
+    .colorBlue{
+        background: radial-gradient(#e8d6f7, #1d2bc2);
+    }
+
+    .colorPurple{
+        background: radial-gradient(#faf5ff, #df6afc);
     }
 
     .powerOff {
         background-color: blue;
+    }
+
+    .volume {
+
+
+        transform: rotate(90deg);
     }
 </style>
