@@ -4,6 +4,8 @@
         v-if="!isMobile()"
         class="main"
         tabindex="-1"
+        :attr="{attributes: isOn}"
+        
         @keydown.q="playSound(qSound.link); qSound.isClicked=!qSound.isClicked"
         @keyup.q="qSound.isClicked=!qSound.isClicked"
         @keydown.w="playSound(wSound.link); wSound.isClicked=!wSound.isClicked"
@@ -22,11 +24,12 @@
         @keyup.x="xSound.isClicked=!xSound.isClicked"
         @keydown.c="playSound(cSound.link); cSound.isClicked=!cSound.isClicked"
         @keyup.c="cSound.isClicked=!cSound.isClicked"
+
         >
-        <div class="powerButton" @click="isOn=!isOn"><button>{{isOn}}</button></div>
+        <div class="powerButton" @click="isOn=!isOn"><button>&#9211;</button></div>
         <div
             class="qdiv"
-            :class="{colorRed: qSound.isClicked, colorGreen: !qSound.isClicked}">q</div>
+            :class="{colorRed: qSound.isClicked, colorGreen: !qSound.isClicked, isoff: !isOn}">q</div>
         <div
             class="wdiv"
             :class="{colorRed: wSound.isClicked, colorGreen: !wSound.isClicked}">w</div>
@@ -53,6 +56,7 @@
             :class="{colorRed: cSound.isClicked, colorPurple: !cSound.isClicked}">c</div>
         <div class="volume">
             <input type="range">
+            <label for="range">volume</label>
             <input type="range">
         </div>
         
@@ -68,6 +72,16 @@
         data() {
             return {
                 isOn: false,
+
+
+
+
+                attributes: {
+                    
+                },
+
+
+
 
                 qSound:{
                     link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/31[kb]sp12-06.wav.mp3',
@@ -132,7 +146,6 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
-        gap: 2% 2%;
         grid-template-areas:    "powerButton qdiv wdiv ediv" 
                                 "volume adiv sdiv ddiv" 
                                 "volume zdiv xdiv cdiv";
@@ -140,7 +153,9 @@
         align-items: center;
         width: 35%;
         height: 50%;
-        border: 2px solid silver;
+        background: #616161;
+        background: -webkit-linear-gradient(to bottom, rgba(97, 97, 97, 1), rgba(15, 15, 16, 1));
+        background: linear-gradient(to bottom, rgba(97, 97, 97, 1), rgba(15, 15, 16, 1));
         outline: none;
     }
 
@@ -177,8 +192,8 @@
         border: none;
         align-items: center;
         justify-content: center;
-        width: 8rem;
-        height: 8rem;
+        width: 6rem;
+        height: 6rem;
     }
 
     .colorRed {
@@ -186,7 +201,8 @@
     }
 
     .colorGreen {
-        background: radial-gradient(#e9f0ea00, #42bb52);
+        background: radial-gradient(#e9f0ea, #42bb52);
+        
     }
 
     .colorBlue{
@@ -202,8 +218,19 @@
     }
 
     .volume {
+                display: flex;
+        flex-direction: column;
+    }
 
+    .powerButton {
+        font-family: 'Times New Roman', Times, serif;
+    }
 
-        transform: rotate(90deg);
+    .isoff {
+        pointer-events: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
 </style>

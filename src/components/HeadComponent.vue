@@ -1,8 +1,6 @@
 <template>
   <div class="main">
-    <button></button>
     <div class="logo">Launch - Pad</div>
-    <button>Change Keys</button>
   </div>
 </template>
 
@@ -22,8 +20,7 @@ export default {
     justify-content: center;
     flex-direction: row;
     width: 35%;
-    margin-top: 4vh;
-    margin-bottom: 2vh;
+    border: 1px solid rgb(78, 76, 76);
 }
 </style>
 
