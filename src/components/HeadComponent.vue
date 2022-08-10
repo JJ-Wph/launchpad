@@ -20,7 +20,7 @@ export default {
     justify-content: center;
     flex-direction: row;
     width: 35%;
-    border: 1px solid rgb(78, 76, 76);
+    border: 1px solid rgb(34, 34, 34);
 }
 </style>
 

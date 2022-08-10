@@ -26,7 +26,7 @@
         @keyup.c="cSound.isClicked=!cSound.isClicked"
 
         >
-        <div class="powerButton" @click="isOn=!isOn"><button>&#9211;</button></div>
+        <div class="powerButton" @click="isOn=!isOn"><button><img src="./imgs/pwrbtn.png"></button></div>
         <div
             class="qdiv"
             :class="{colorRed: qSound.isClicked, colorGreen: !qSound.isClicked, isoff: !isOn}">q</div>
@@ -156,9 +156,29 @@
         background: #616161;
         background: -webkit-linear-gradient(to bottom, rgba(97, 97, 97, 1), rgba(15, 15, 16, 1));
         background: linear-gradient(to bottom, rgba(97, 97, 97, 1), rgba(15, 15, 16, 1));
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
         outline: none;
     }
+    .powerButton {
+        grid-area: powerButton;
+        display: flex;
+        color: blue;
+        background: none;
+        width: 100%;
+        height: 100%;
+    }
 
+    button {
+        width: 100%;
+        height: 100%;
+        background-color: blue;
+    }
+
+    img{
+        width: 50%;
+        height: auto;
+        filter: invert(30%) sepia(88%) saturate(3790%) hue-rotate(347deg) brightness(77%) contrast(101%);
+    }
     .qdiv {
         grid-area: qdiv;
     }
@@ -194,23 +214,29 @@
         justify-content: center;
         width: 6rem;
         height: 6rem;
+        
+        
     }
 
     .colorRed {
         background: radial-gradient(#e7c0c0, #c41c1c);
+        box-shadow: rgb(82, 83, 83) 3px 3px 6px 0px inset, rgba(92, 92, 92, 0.5) -3px -3px 6px 1px inset;
+        
     }
 
     .colorGreen {
         background: radial-gradient(#e9f0ea, #42bb52);
-        
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
 
     .colorBlue{
         background: radial-gradient(#e8d6f7, #1d2bc2);
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
 
     .colorPurple{
         background: radial-gradient(#faf5ff, #df6afc);
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
 
     .powerOff {
@@ -218,12 +244,8 @@
     }
 
     .volume {
-                display: flex;
+        display: flex;
         flex-direction: column;
-    }
-
-    .powerButton {
-        font-family: 'Times New Roman', Times, serif;
     }
 
     .isoff {
