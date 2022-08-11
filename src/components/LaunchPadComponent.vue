@@ -4,8 +4,6 @@
         v-if="!isMobile()"
         class="main"
         tabindex="-1"
-        :attr="{attributes: isOn}"
-        
         @keydown.q="playSound(qSound.link); qSound.isClicked=!qSound.isClicked"
         @keyup.q="qSound.isClicked=!qSound.isClicked"
         @keydown.w="playSound(wSound.link); wSound.isClicked=!wSound.isClicked"
@@ -24,42 +22,36 @@
         @keyup.x="xSound.isClicked=!xSound.isClicked"
         @keydown.c="playSound(cSound.link); cSound.isClicked=!cSound.isClicked"
         @keyup.c="cSound.isClicked=!cSound.isClicked"
-
         >
-        <div class="powerButton" @click="isOn=!isOn"><button><img src="./imgs/pwrbtn.png"></button></div>
+        <div class="powerButton" @click="powerOnOrOff; isOn=!isOn"><button><img src="./imgs/pwrbtn.png"></button></div>
         <div
             class="qdiv"
-            :class="{colorRed: qSound.isClicked, colorGreen: !qSound.isClicked, isoff: !isOn}">q</div>
+            :class="{isoff: !isOn, colorRed: qSound.isClicked, colorGreen: !qSound.isClicked}">Q</div>
         <div
             class="wdiv"
-            :class="{colorRed: wSound.isClicked, colorGreen: !wSound.isClicked}">w</div>
+            :class="{isoff: !isOn, colorRed: wSound.isClicked, colorGreen: !wSound.isClicked}">W</div>
         <div
             class="ediv"
-            :class="{colorRed: eSound.isClicked, colorGreen: !eSound.isClicked}">e</div>
+            :class="{isoff: !isOn, colorRed: eSound.isClicked, colorGreen: !eSound.isClicked}">E</div>
         <div
             class="adiv"
-            :class="{colorRed: aSound.isClicked, colorBlue: !aSound.isClicked}">a</div>
+            :class="{isoff: !isOn, colorRed: aSound.isClicked, colorBlue: !aSound.isClicked}">A</div>
         <div
             class="sdiv"
-            :class="{colorRed: sSound.isClicked, colorBlue: !sSound.isClicked}">s</div>
+            :class="{isoff: !isOn, colorRed: sSound.isClicked, colorBlue: !sSound.isClicked}">S</div>
         <div
             class="ddiv"
-            :class="{colorRed: dSound.isClicked, colorBlue: !dSound.isClicked}">d</div>
+            :class="{isoff: !isOn, colorRed: dSound.isClicked, colorBlue: !dSound.isClicked}">D</div>
         <div
             class="zdiv"
-            :class="{colorRed: zSound.isClicked, colorPurple: !zSound.isClicked}">z</div>
+            :class="{isoff: !isOn, colorRed: zSound.isClicked, colorPurple: !zSound.isClicked}">Z</div>
         <div
             class="xdiv"
-            :class="{colorRed: xSound.isClicked, colorPurple: !xSound.isClicked}">x</div>
+            :class="{isoff: !isOn, colorRed: xSound.isClicked, colorPurple: !xSound.isClicked}">X</div>
         <div
             class="cdiv"
-            :class="{colorRed: cSound.isClicked, colorPurple: !cSound.isClicked}">c</div>
-        <div class="volume">
-            <input type="range">
-            <label for="range">volume</label>
-            <input type="range">
-        </div>
-        
+            :class="{isoff: !isOn, colorRed: cSound.isClicked, colorPurple: !cSound.isClicked}">C</div>
+        <div>{{isReady}}</div>
     </div>
     
     <div v-else>haba baba</div>
@@ -72,51 +64,42 @@
         data() {
             return {
                 isOn: false,
-
-
-
-
-                attributes: {
-                    
-                },
-
-
-
+                isReady: false,
 
                 qSound:{
-                    link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/31[kb]sp12-06.wav.mp3',
+                    link: "",
                     isClicked: false
                 },
                 wSound:{
-                    link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/34[kb]sp12-28.wav.mp3',
+                    link: "",
                     isClicked: false
                 },
                 eSound:{
-                    link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/25[kb]sp12-26.wav.mp3',
+                    link: "",
                     isClicked: false
                 },
                 aSound:{
-                    link: 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/VIDEO%20GAMES/zaxxon/17[kb]01.wav.mp3',
+                    link: "",
                     isClicked: false
                 },
                 sSound:{
-                    link: 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Cheesy%20Lo-Fi%20Sound%20Effects/39[kb]Alert-Siren.wav.mp3',
+                    link: "",
                     isClicked: false
                 },
                 dSound:{
-                    link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/18[kb]sp12-17.wav.mp3',
+                    link: "",
                     isClicked: false
                 },
                 zSound:{
-                    link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/7[kb]sp12-24.wav.mp3',
+                    link: "",
                     isClicked: false
                 },
                 xSound:{
-                    link: 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Cheesy%20Lo-Fi%20Sound%20Effects/11[kb]Beep-Boop.wav.mp3',
+                    link: "",
                     isClicked: false
                 },
                 cSound: {
-                    link: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/28[kb]sp12-21.wav.mp3',
+                    link: "",
                     isClicked: false
                 }
             }
@@ -137,7 +120,36 @@
                     audio.play();
                 }
             },
+        },
+
+        computed:{
+            powerOnOrOff() {
+                if(this.isReady==false){
+                        this.qSound.link = 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/31[kb]sp12-06.wav.mp3';
+                        this.wSound.link = 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/34[kb]sp12-28.wav.mp3';
+                        this.eSound.link = 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/25[kb]sp12-26.wav.mp3';
+                        this.aSound.link = 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/VIDEO%20GAMES/zaxxon/17[kb]01.wav.mp3';
+                        this.sSound.link = 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Cheesy%20Lo-Fi%20Sound%20Effects/39[kb]Alert-Siren.wav.mp3';
+                        this.dSound.link = 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/18[kb]sp12-17.wav.mp3';
+                        this.zSound.link = 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/7[kb]sp12-24.wav.mp3';
+                        this.xSound.link = 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Cheesy%20Lo-Fi%20Sound%20Effects/11[kb]Beep-Boop.wav.mp3';
+                        this.cSound.link = 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/28[kb]sp12-21.wav.mp3';
+                        this.isReady = true;
+                } else {
+                        this.qSound.link = "vfd";
+                        this.wSound.link = "dfv";
+                        this.eSound.link = "fdv";
+                        this.aSound.link = "dfv";
+                        this.sSound.link = "fvd";
+                        this.dSound.link = "dfv";
+                        this.zSound.link = "dfv";
+                        this.xSound.link = "fdv";
+                        this.cSound.link = "fdv";
+                        this.isReady = false;
+                } 
+            },
         }
+        
     }
 </script>
 
@@ -147,8 +159,8 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
         grid-template-areas:    "powerButton qdiv wdiv ediv" 
-                                "volume adiv sdiv ddiv" 
-                                "volume zdiv xdiv cdiv";
+                                ". adiv sdiv ddiv" 
+                                ". zdiv xdiv cdiv";
         justify-items: center;
         align-items: center;
         width: 35%;
@@ -162,22 +174,24 @@
     .powerButton {
         grid-area: powerButton;
         display: flex;
-        color: blue;
-        background: none;
         width: 100%;
         height: 100%;
     }
 
     button {
-        width: 100%;
-        height: 100%;
-        background-color: blue;
+        width: 75%;
+        height: 75%;
+        background: radial-gradient(#e9e3e3, #706f6f);
+        box-shadow: rgba(31, 31, 31, 0.4) 0px 2px 4px, rgba(20, 20, 20, 0.3) 0px 7px 13px -3px, rgba(12, 12, 12, 0.2) 0px -3px 0px inset;
+        border: 1px solid grey;
+        border-radius: 50%;
+        outline: none;
     }
 
     img{
         width: 50%;
         height: auto;
-        filter: invert(30%) sepia(88%) saturate(3790%) hue-rotate(347deg) brightness(77%) contrast(101%);
+        filter: invert(40%) sepia(52%) saturate(21%) hue-rotate(18deg) brightness(96%) contrast(81%);
     }
     .qdiv {
         grid-area: qdiv;
@@ -214,14 +228,11 @@
         justify-content: center;
         width: 6rem;
         height: 6rem;
-        
-        
     }
 
     .colorRed {
-        background: radial-gradient(#e7c0c0, #c41c1c);
-        box-shadow: rgb(82, 83, 83) 3px 3px 6px 0px inset, rgba(92, 92, 92, 0.5) -3px -3px 6px 1px inset;
-        
+        background: radial-gradient(#e7c0c0, #dd4545);
+        box-shadow: rgb(167, 113, 113) 3px 3px 6px 0px inset, rgba(235, 132, 132, 0.5) -3px -3px 6px 1px inset;
     }
 
     .colorGreen {
@@ -239,20 +250,8 @@
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
 
-    .powerOff {
-        background-color: blue;
-    }
-
-    .volume {
-        display: flex;
-        flex-direction: column;
-    }
-
     .isoff {
-        pointer-events: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+        background: radial-gradient(#e9e3e3, #706f6f);
+        box-shadow: rgba(31, 31, 31, 0.4) 0px 2px 4px, rgba(20, 20, 20, 0.3) 0px 7px 13px -3px, rgba(12, 12, 12, 0.2) 0px -3px 0px inset;
     }
 </style>
