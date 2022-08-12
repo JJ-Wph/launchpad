@@ -23,7 +23,16 @@
         @keydown.c="playSound(cSound.link); cSound.isClicked=!cSound.isClicked"
         @keyup.c="cSound.isClicked=!cSound.isClicked"
         >
-        <div class="powerButton" @click="powerOnOrOff; isOn=!isOn"><button><img src="./imgs/pwrbtn.png"></button></div>
+        <div 
+            class="powerButton" 
+            @click="powerOnOrOff; isOn=!isOn">
+                <button :class="{colorRed: isOn}">
+                        <img :class="{redSymbol: isOn}" src="./imgs/pwrbtn.png">
+                </button>
+        </div>
+        
+        
+        
         <div
             class="qdiv"
             :class="{isoff: !isOn, colorRed: qSound.isClicked, colorGreen: !qSound.isClicked}">Q</div>
@@ -51,7 +60,6 @@
         <div
             class="cdiv"
             :class="{isoff: !isOn, colorRed: cSound.isClicked, colorPurple: !cSound.isClicked}">C</div>
-        <div>{{isReady}}</div>
     </div>
     
     <div v-else>haba baba</div>
@@ -64,7 +72,6 @@
         data() {
             return {
                 isOn: false,
-                isReady: false,
 
                 qSound:{
                     link: "",
@@ -124,32 +131,28 @@
 
         computed:{
             powerOnOrOff() {
-                if(this.isReady==false){
-                        this.qSound.link = 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/31[kb]sp12-06.wav.mp3';
-                        this.wSound.link = 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/34[kb]sp12-28.wav.mp3';
-                        this.eSound.link = 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/25[kb]sp12-26.wav.mp3';
-                        this.aSound.link = 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/VIDEO%20GAMES/zaxxon/17[kb]01.wav.mp3';
-                        this.sSound.link = 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Cheesy%20Lo-Fi%20Sound%20Effects/39[kb]Alert-Siren.wav.mp3';
-                        this.dSound.link = 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/18[kb]sp12-17.wav.mp3';
-                        this.zSound.link = 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/7[kb]sp12-24.wav.mp3';
-                        this.xSound.link = 'https://sampleswap.org/samples-ghost/SOUND%20EFFECTS%20and%20NOISES/Cheesy%20Lo-Fi%20Sound%20Effects/11[kb]Beep-Boop.wav.mp3';
-                        this.cSound.link = 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/EMU%20SP%2012%20Kult/28[kb]sp12-21.wav.mp3';
-                        this.isReady = true;
+                if(this.isOn==false) {
+                        this.qSound.link = '';
+                        this.wSound.link = './audio/Antidote Audio - Dubstep Perc 03.wav';
+                        this.aSound.link = '';
+                        this.sSound.link = '';
+                        this.dSound.link = '';
+                        this.zSound.link = '';
+                        this.xSound.link = '';
+                        this.cSound.link = '';
                 } else {
-                        this.qSound.link = "vfd";
-                        this.wSound.link = "dfv";
-                        this.eSound.link = "fdv";
-                        this.aSound.link = "dfv";
-                        this.sSound.link = "fvd";
-                        this.dSound.link = "dfv";
-                        this.zSound.link = "dfv";
-                        this.xSound.link = "fdv";
-                        this.cSound.link = "fdv";
-                        this.isReady = false;
+                        this.qSound.link = "";
+                        this.wSound.link = "";
+                        this.eSound.link = "";
+                        this.aSound.link = "";
+                        this.sSound.link = "";
+                        this.dSound.link = "";
+                        this.zSound.link = "";
+                        this.xSound.link = "";
+                        this.cSound.link = "";
                 } 
             },
         }
-        
     }
 </script>
 
@@ -179,8 +182,8 @@
     }
 
     button {
-        width: 75%;
-        height: 75%;
+        width: 60%;
+        height: 60%;
         background: radial-gradient(#e9e3e3, #706f6f);
         box-shadow: rgba(31, 31, 31, 0.4) 0px 2px 4px, rgba(20, 20, 20, 0.3) 0px 7px 13px -3px, rgba(12, 12, 12, 0.2) 0px -3px 0px inset;
         border: 1px solid grey;
@@ -230,8 +233,12 @@
         height: 6rem;
     }
 
+    .redSymbol {
+        filter: invert(73%) sepia(43%) saturate(7492%) hue-rotate(325deg) brightness(100%) contrast(90%);
+    }
+
     .colorRed {
-        background: radial-gradient(#e7c0c0, #dd4545);
+        background: radial-gradient(#e7c0c0, #ff3737);
         box-shadow: rgb(167, 113, 113) 3px 3px 6px 0px inset, rgba(235, 132, 132, 0.5) -3px -3px 6px 1px inset;
     }
 
@@ -246,12 +253,19 @@
     }
 
     .colorPurple{
-        background: radial-gradient(#faf5ff, #df6afc);
+        background: radial-gradient(#faf5ff, #692a79);
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
 
     .isoff {
         background: radial-gradient(#e9e3e3, #706f6f);
         box-shadow: rgba(31, 31, 31, 0.4) 0px 2px 4px, rgba(20, 20, 20, 0.3) 0px 7px 13px -3px, rgba(12, 12, 12, 0.2) 0px -3px 0px inset;
+    }
+
+    @media (max-width: 1200px) {
+        .main > div {
+            width: 4rem;
+            height: 4rem;
+        }
     }
 </style>
