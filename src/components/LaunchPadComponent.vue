@@ -134,6 +134,7 @@
                 if(this.isOn==false) {
                         this.qSound.link = require('@/assets/audio/BassD20.wav');
                         this.wSound.link = require('@/assets/audio/BassF24.wav');
+                        this.eSound.link = require('@/assets/audio/Perc25.wav');
                         this.aSound.link = require('@/assets/audio/BassF3.wav');
                         this.sSound.link = require('@/assets/audio/BassF4.wav');
                         this.dSound.link = require('@/assets/audio/BassF34.wav');
