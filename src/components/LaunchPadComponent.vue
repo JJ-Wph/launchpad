@@ -1,7 +1,7 @@
 <template>
     
     <div
-        v-if="!isMobile()"
+        
         class="main"
         tabindex="-1"
         @keydown.q="playSound(qSound.link); qSound.isClicked=!qSound.isClicked"
@@ -30,39 +30,54 @@
                         <img :class="{redSymbol: isOn}" src="./imgs/pwrbtn.png">
                 </button>
         </div>
-        
-        
-        
         <div
+            @touchend="playSound(qSound.link); qSound.isClicked=!qSound.isClicked"
+            @touchstart="qSound.isClicked=!qSound.isClicked"
             class="qdiv"
             :class="{isoff: !isOn, colorRed: qSound.isClicked, colorGreen: !qSound.isClicked}">Q</div>
         <div
+            @touchstart="playSound(wSound.link); wSound.isClicked=!wSound.isClicked"
+            @touchend="wSound.isClicked=!wSound.isClicked"
             class="wdiv"
             :class="{isoff: !isOn, colorRed: wSound.isClicked, colorGreen: !wSound.isClicked}">W</div>
         <div
+            @touchstart="playSound(eSound.link); eSound.isClicked=!eSound.isClicked"
+            @touchend="eSound.isClicked=!eSound.isClicked"
             class="ediv"
             :class="{isoff: !isOn, colorRed: eSound.isClicked, colorGreen: !eSound.isClicked}">E</div>
         <div
+            @touchstart="playSound(aSound.link); aSound.isClicked=!aSound.isClicked"
+            @touchend="aSound.isClicked=!aSound.isClicked"
             class="adiv"
             :class="{isoff: !isOn, colorRed: aSound.isClicked, colorBlue: !aSound.isClicked}">A</div>
         <div
+            @touchstart="playSound(sSound.link); sSound.isClicked=!sSound.isClicked"
+            @touchend="sSound.isClicked=!sSound.isClicked"
             class="sdiv"
             :class="{isoff: !isOn, colorRed: sSound.isClicked, colorBlue: !sSound.isClicked}">S</div>
         <div
+            @touchstart="playSound(dSound.link); dSound.isClicked=!dSound.isClicked"
+            @touchend="dSound.isClicked=!dSound.isClicked"
             class="ddiv"
             :class="{isoff: !isOn, colorRed: dSound.isClicked, colorBlue: !dSound.isClicked}">D</div>
         <div
+            @touchstart="playSound(zSound.link); zSound.isClicked=!zSound.isClicked"
+            @touchend="zSound.isClicked=!zSound.isClicked"
             class="zdiv"
             :class="{isoff: !isOn, colorRed: zSound.isClicked, colorPurple: !zSound.isClicked}">Z</div>
         <div
+            @touchstart="playSound(xSound.link); xSound.isClicked=!xSound.isClicked"
+            @touchend="xSound.isClicked=!xSound.isClicked"
             class="xdiv"
             :class="{isoff: !isOn, colorRed: xSound.isClicked, colorPurple: !xSound.isClicked}">X</div>
         <div
+            @touchstart="playSound(cSound.link); cSound.isClicked=!cSound.isClicked"
+            @touchend="cSound.isClicked=!cSound.isClicked"
             class="cdiv"
             :class="{isoff: !isOn, colorRed: cSound.isClicked, colorPurple: !cSound.isClicked}">C</div>
     </div>
     
-    <div v-else>haba baba</div>
+    <!-- <div v-else>haba baba</div> -->
 </template>
 
 <script>
@@ -113,14 +128,6 @@
         },
 
         methods: {
-            isMobile() {
-                if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                    return true
-                } else {
-                    return false
-                }
-            },
-
             playSound(sound) {
                 if (sound) {
                     var audio = new Audio(sound);
@@ -157,7 +164,7 @@
     }
 </script>
 
-<style scoped="scoped">
+<style scoped>
     .main {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -264,6 +271,11 @@
     }
 
     @media (max-width: 1200px) {
+
+        .main {
+            width: 350px;
+            height: 350px;
+        }
         .main > div {
             width: 4rem;
             height: 4rem;
