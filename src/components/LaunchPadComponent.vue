@@ -133,7 +133,7 @@
             powerOnOrOff() {
                 if(this.isOn==false) {
                         this.qSound.link = '';
-                        this.wSound.link = '@/assets/audio/BassF24.wav';
+                        this.wSound.link = '../assets/audio/BassF24.wav';
                         this.aSound.link = '';
                         this.sSound.link = '';
                         this.dSound.link = '';
