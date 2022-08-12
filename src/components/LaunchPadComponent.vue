@@ -132,14 +132,14 @@
         computed:{
             powerOnOrOff() {
                 if(this.isOn==false) {
-                        this.qSound.link = '';
+                        this.qSound.link = require('@/assets/audio/BassD20.wav');
                         this.wSound.link = require('@/assets/audio/BassF24.wav');
-                        this.aSound.link = '';
-                        this.sSound.link = '';
-                        this.dSound.link = '';
-                        this.zSound.link = '';
-                        this.xSound.link = '';
-                        this.cSound.link = '';
+                        this.aSound.link = require('@/assets/audio/BassF3.wav');
+                        this.sSound.link = require('@/assets/audio/BassF4.wav');
+                        this.dSound.link = require('@/assets/audio/BassF34.wav');
+                        this.zSound.link = require('@/assets/audio/Perc03.wav');
+                        this.xSound.link = require('@/assets/audio/Perc13.wav');
+                        this.cSound.link = require('@/assets/audio/Perc18.wav');
                 } else {
                         this.qSound.link = "";
                         this.wSound.link = "";
