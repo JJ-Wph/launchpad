@@ -76,8 +76,6 @@
             class="cdiv"
             :class="{isoff: !isOn, colorRed: cSound.isClicked, colorPurple: !cSound.isClicked}">C</div>
     </div>
-    
-    <!-- <div v-else>haba baba</div> -->
 </template>
 
 <script>
@@ -237,6 +235,7 @@
         border: none;
         align-items: center;
         justify-content: center;
+        font-family: 'Silkscreen', cursive;
         width: 6rem;
         height: 6rem;
     }

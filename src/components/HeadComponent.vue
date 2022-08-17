@@ -23,6 +23,7 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
     .main {
     display: flex;
     justify-content: center;
@@ -33,7 +34,7 @@ export default {
 </style>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
 
 .logo{
     background-color: rgb(0, 0, 0);
